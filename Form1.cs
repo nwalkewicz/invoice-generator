@@ -358,7 +358,7 @@ namespace invoice_generator
 
                 // Draw ITEM cell
                 gfx.DrawString(
-                    dataGridView[0, i]?.Value?.ToString() ?? string.Empty,
+                    dataGridView[0, i]?.FormattedValue?.ToString() ?? string.Empty,
                     font_body1_bold,
                     XBrushes.Black,
                     new XRect(
@@ -370,7 +370,7 @@ namespace invoice_generator
 
                 // Draw QTY cell
                 gfx.DrawString(
-                    dataGridView[1, i]?.Value?.ToString() ?? string.Empty,
+                    dataGridView[1, i]?.FormattedValue?.ToString() ?? string.Empty,
                     font_body1_regular,
                     XBrushes.Black,
                     new XRect(
@@ -382,7 +382,7 @@ namespace invoice_generator
 
                 // Draw RATE cell
                 gfx.DrawString(
-                    dataGridView[2, i]?.Value?.ToString() ?? string.Empty,
+                    dataGridView[2, i]?.FormattedValue?.ToString() ?? string.Empty,
                     font_body1_regular,
                     XBrushes.Black,
                     new XRect(
@@ -394,7 +394,7 @@ namespace invoice_generator
 
                 // Draw AMOUNT cell
                 gfx.DrawString(
-                    dataGridView[3, i]?.Value?.ToString() ?? string.Empty,
+                    dataGridView[3, i]?.FormattedValue?.ToString() ?? string.Empty,
                     font_body1_regular,
                     XBrushes.Black,
                     new XRect(
