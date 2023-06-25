@@ -83,7 +83,6 @@ namespace invoice_generator
             input_to.Name = "input_to";
             input_to.Size = new Size(319, 23);
             input_to.TabIndex = 4;
-            input_to.Text = "Lulius Innovation";
             // 
             // label_to
             // 
@@ -216,7 +215,6 @@ namespace invoice_generator
             input_id.Name = "input_id";
             input_id.Size = new Size(57, 23);
             input_id.TabIndex = 3;
-            input_id.Text = "8";
             // 
             // button_font
             // 
