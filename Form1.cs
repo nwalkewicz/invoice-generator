@@ -116,7 +116,7 @@ namespace invoice_generator
         private void savePdf(string filename)
         {
             string FROM = input_from.Text;
-            string ID = "#" + input_id.Text;
+            string ID = input_id.Text != string.Empty ? "#" + input_id.Text : string.Empty;
             string TO = input_to.Text;
 
             int MARGIN_X = 36;
