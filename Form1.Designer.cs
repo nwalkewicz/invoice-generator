@@ -248,6 +248,7 @@ namespace invoice_generator
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(350, 250);
             Name = "form";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Invoice Generator";
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
