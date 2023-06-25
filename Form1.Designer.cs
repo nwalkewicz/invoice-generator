@@ -49,7 +49,10 @@ namespace invoice_generator
             button_save = new Button();
             label_total = new Label();
             label_total_value = new Label();
-            checkBox_centered = new CheckBox();
+            label_id = new Label();
+            input_id = new TextBox();
+            fontDialog = new FontDialog();
+            button_font = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -59,7 +62,7 @@ namespace invoice_generator
             input_from.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             input_from.Location = new Point(53, 12);
             input_from.Name = "input_from";
-            input_from.Size = new Size(319, 23);
+            input_from.Size = new Size(236, 23);
             input_from.TabIndex = 0;
             input_from.Text = "Nicholas Walkewicz";
             // 
@@ -79,7 +82,8 @@ namespace invoice_generator
             input_to.Location = new Point(53, 41);
             input_to.Name = "input_to";
             input_to.Size = new Size(319, 23);
-            input_to.TabIndex = 2;
+            input_to.TabIndex = 4;
+            input_to.Text = "Lulius Innovation";
             // 
             // label_to
             // 
@@ -87,7 +91,7 @@ namespace invoice_generator
             label_to.Location = new Point(28, 44);
             label_to.Name = "label_to";
             label_to.Size = new Size(19, 15);
-            label_to.TabIndex = 3;
+            label_to.TabIndex = 5;
             label_to.Text = "To";
             // 
             // label_items
@@ -96,7 +100,7 @@ namespace invoice_generator
             label_items.Location = new Point(11, 73);
             label_items.Name = "label_items";
             label_items.Size = new Size(36, 15);
-            label_items.TabIndex = 4;
+            label_items.TabIndex = 6;
             label_items.Text = "Items";
             // 
             // dataGridView
@@ -109,7 +113,7 @@ namespace invoice_generator
             dataGridView.RowTemplate.Height = 25;
             dataGridView.ScrollBars = ScrollBars.Vertical;
             dataGridView.Size = new Size(360, 429);
-            dataGridView.TabIndex = 5;
+            dataGridView.TabIndex = 7;
             dataGridView.CellFormatting += dataGridView_CellFormatting;
             dataGridView.CellValueChanged += dataGridView_CellValueChanged;
             dataGridView.UserDeletedRow += dataGridView_UserDeletedRow;
@@ -164,6 +168,27 @@ namespace invoice_generator
             tableCol_total.SortMode = DataGridViewColumnSortMode.NotSortable;
             tableCol_total.Width = 38;
             // 
+            // button_font
+            // 
+            button_font.Location = new Point(216, 526);
+            button_font.Name = "button_font";
+            button_font.Size = new Size(75, 23);
+            button_font.TabIndex = 10;
+            button_font.Text = "Font...";
+            button_font.UseVisualStyleBackColor = true;
+            button_font.Click += button_font_Click;
+            // 
+            // button_save
+            // 
+            button_save.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button_save.Location = new Point(297, 526);
+            button_save.Name = "button_save";
+            button_save.Size = new Size(75, 23);
+            button_save.TabIndex = 11;
+            button_save.Text = "Save PDF";
+            button_save.UseVisualStyleBackColor = true;
+            button_save.Click += button_save_Click;
+            // 
             // label_total
             // 
             label_total.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
@@ -171,7 +196,7 @@ namespace invoice_generator
             label_total.Location = new Point(12, 530);
             label_total.Name = "label_total";
             label_total.Size = new Size(35, 15);
-            label_total.TabIndex = 6;
+            label_total.TabIndex = 8;
             label_total.Text = "Total:";
             // 
             // label_total_value
@@ -181,30 +206,27 @@ namespace invoice_generator
             label_total_value.Location = new Point(53, 530);
             label_total_value.Name = "label_total_value";
             label_total_value.Size = new Size(34, 15);
-            label_total_value.TabIndex = 7;
+            label_total_value.TabIndex = 9;
             label_total_value.Text = "$0.00";
             // 
-            // checkBox_centered
+            // label_id
             // 
-            checkBox_centered.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            checkBox_centered.AutoSize = true;
-            checkBox_centered.Location = new Point(217, 529);
-            checkBox_centered.Name = "checkBox_centered";
-            checkBox_centered.Size = new Size(74, 19);
-            checkBox_centered.TabIndex = 8;
-            checkBox_centered.Text = "Centered";
-            checkBox_centered.UseVisualStyleBackColor = true;
+            label_id.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label_id.AutoSize = true;
+            label_id.Location = new Point(295, 15);
+            label_id.Name = "label_id";
+            label_id.Size = new Size(14, 15);
+            label_id.TabIndex = 2;
+            label_id.Text = "#";
             // 
-            // button_save
+            // input_id
             // 
-            button_save.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button_save.Location = new Point(297, 526);
-            button_save.Name = "button_save";
-            button_save.Size = new Size(75, 23);
-            button_save.TabIndex = 9;
-            button_save.Text = "Save PDF";
-            button_save.UseVisualStyleBackColor = true;
-            button_save.Click += button_save_Click;
+            input_id.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            input_id.Location = new Point(315, 12);
+            input_id.Name = "input_id";
+            input_id.Size = new Size(57, 23);
+            input_id.TabIndex = 3;
+            input_id.Text = "8";
             // 
             // form
             // 
@@ -212,7 +234,9 @@ namespace invoice_generator
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Window;
             ClientSize = new Size(384, 561);
-            Controls.Add(checkBox_centered);
+            Controls.Add(button_font);
+            Controls.Add(input_id);
+            Controls.Add(label_id);
             Controls.Add(label_total_value);
             Controls.Add(label_total);
             Controls.Add(button_save);
@@ -248,6 +272,9 @@ namespace invoice_generator
         private DataGridViewTextBoxColumn tableCol_total;
         private Label label_total;
         private Label label_total_value;
-        private CheckBox checkBox_centered;
+        private Label label_id;
+        private TextBox input_id;
+        private FontDialog fontDialog;
+        private Button button_font;
     }
 }
