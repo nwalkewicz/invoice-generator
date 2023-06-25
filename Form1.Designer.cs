@@ -168,16 +168,6 @@ namespace invoice_generator
             tableCol_total.SortMode = DataGridViewColumnSortMode.NotSortable;
             tableCol_total.Width = 38;
             // 
-            // button_font
-            // 
-            button_font.Location = new Point(216, 526);
-            button_font.Name = "button_font";
-            button_font.Size = new Size(75, 23);
-            button_font.TabIndex = 10;
-            button_font.Text = "Font...";
-            button_font.UseVisualStyleBackColor = true;
-            button_font.Click += button_font_Click;
-            // 
             // button_save
             // 
             button_save.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -227,6 +217,17 @@ namespace invoice_generator
             input_id.Size = new Size(57, 23);
             input_id.TabIndex = 3;
             input_id.Text = "8";
+            // 
+            // button_font
+            // 
+            button_font.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button_font.Location = new Point(216, 526);
+            button_font.Name = "button_font";
+            button_font.Size = new Size(75, 23);
+            button_font.TabIndex = 10;
+            button_font.Text = "Font...";
+            button_font.UseVisualStyleBackColor = true;
+            button_font.Click += button_font_Click;
             // 
             // form
             // 

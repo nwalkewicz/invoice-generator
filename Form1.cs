@@ -352,7 +352,7 @@ namespace invoice_generator
             int LATEST_ROW_OFFSET = TABLEHEADER_BG_OFFSETY;
             for (int i = 0; i < dataGridView.RowCount; i++)
             {
-                if (dataGridView.Rows[i].IsNewRow ) { continue; }
+                if (dataGridView.Rows[i].IsNewRow) { continue; }
                 LATEST_ROW_OFFSET += TABLE_ROW_HEIGHT;
                 int TEXT_OFFSETY = LATEST_ROW_OFFSET + TABLE_ROW_HEIGHT / 2 - BODY1_SIZE / 2;
 
@@ -409,7 +409,7 @@ namespace invoice_generator
             document.Save(filename);
         }
 
-        private void button_font_Click( object sender, EventArgs e )
+        private void button_font_Click(object sender, EventArgs e)
         {
             if (fontDialog.ShowDialog() == DialogResult.OK)
             {
