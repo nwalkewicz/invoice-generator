@@ -30,10 +30,10 @@ namespace invoice_generator
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form));
             input_from = new TextBox();
             label_from = new Label();
@@ -43,7 +43,7 @@ namespace invoice_generator
             dataGridView = new DataGridView();
             tableCol_description = new DataGridViewTextBoxColumn();
             tableCol_quantity = new DataGridViewTextBoxColumn();
-            tableCol_unit_cost = new DataGridViewTextBoxColumn();
+            tableCol_rate = new DataGridViewTextBoxColumn();
             tableCol_total = new DataGridViewTextBoxColumn();
             saveFileDialog = new SaveFileDialog();
             button_save = new Button();
@@ -106,7 +106,7 @@ namespace invoice_generator
             dataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView.BackgroundColor = SystemColors.Control;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] { tableCol_description, tableCol_quantity, tableCol_unit_cost, tableCol_total });
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { tableCol_description, tableCol_quantity, tableCol_rate, tableCol_total });
             dataGridView.Location = new Point(12, 91);
             dataGridView.Name = "dataGridView";
             dataGridView.RowTemplate.Height = 25;
@@ -120,8 +120,8 @@ namespace invoice_generator
             // tableCol_description
             // 
             tableCol_description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            tableCol_description.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            tableCol_description.DefaultCellStyle = dataGridViewCellStyle1;
             tableCol_description.HeaderText = "Description";
             tableCol_description.Name = "tableCol_description";
             tableCol_description.Resizable = DataGridViewTriState.False;
@@ -130,36 +130,36 @@ namespace invoice_generator
             // tableCol_quantity
             // 
             tableCol_quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.Format = "0.00";
-            dataGridViewCellStyle6.NullValue = "0";
-            tableCol_quantity.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Format = "0.00";
+            dataGridViewCellStyle2.NullValue = "0";
+            tableCol_quantity.DefaultCellStyle = dataGridViewCellStyle2;
             tableCol_quantity.HeaderText = "Quantity";
             tableCol_quantity.Name = "tableCol_quantity";
             tableCol_quantity.Resizable = DataGridViewTriState.False;
             tableCol_quantity.SortMode = DataGridViewColumnSortMode.NotSortable;
             tableCol_quantity.Width = 59;
             // 
-            // tableCol_unit_cost
+            // tableCol_rate
             // 
-            tableCol_unit_cost.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.Format = "$0.00";
-            dataGridViewCellStyle7.NullValue = "$0.00";
-            tableCol_unit_cost.DefaultCellStyle = dataGridViewCellStyle7;
-            tableCol_unit_cost.HeaderText = "Unit Cost";
-            tableCol_unit_cost.Name = "tableCol_unit_cost";
-            tableCol_unit_cost.Resizable = DataGridViewTriState.False;
-            tableCol_unit_cost.SortMode = DataGridViewColumnSortMode.NotSortable;
-            tableCol_unit_cost.Width = 62;
+            tableCol_rate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Format = "$0.00";
+            dataGridViewCellStyle3.NullValue = "$0.00";
+            tableCol_rate.DefaultCellStyle = dataGridViewCellStyle3;
+            tableCol_rate.HeaderText = "Rate";
+            tableCol_rate.Name = "tableCol_rate";
+            tableCol_rate.Resizable = DataGridViewTriState.False;
+            tableCol_rate.SortMode = DataGridViewColumnSortMode.NotSortable;
+            tableCol_rate.Width = 36;
             // 
             // tableCol_total
             // 
             tableCol_total.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "$0.00";
-            dataGridViewCellStyle8.NullValue = "$0.00";
-            tableCol_total.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "$0.00";
+            dataGridViewCellStyle4.NullValue = "$0.00";
+            tableCol_total.DefaultCellStyle = dataGridViewCellStyle4;
             tableCol_total.HeaderText = "Total";
             tableCol_total.Name = "tableCol_total";
             tableCol_total.ReadOnly = true;
@@ -211,6 +211,7 @@ namespace invoice_generator
             // 
             // input_id
             // 
+            input_id.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             input_id.Location = new Point(315, 41);
             input_id.Name = "input_id";
             input_id.Size = new Size(57, 23);
@@ -256,7 +257,7 @@ namespace invoice_generator
         private Button button_save;
         private DataGridViewTextBoxColumn tableCol_description;
         private DataGridViewTextBoxColumn tableCol_quantity;
-        private DataGridViewTextBoxColumn tableCol_unit_cost;
+        private DataGridViewTextBoxColumn tableCol_rate;
         private DataGridViewTextBoxColumn tableCol_total;
         private Label label_total;
         private Label label_id;

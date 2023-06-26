@@ -35,7 +35,7 @@ namespace invoice_generator
 
                 case 2:
                     {
-                        // Unit Cost
+                        // Rate
                         string? strVal = e.Value?.ToString();
                         if (strVal == null) return;
 
@@ -62,7 +62,7 @@ namespace invoice_generator
                     if (strQty == null) return;
                     if (!decimal.TryParse(strQty, out decimal decQty)) return;
 
-                    // Get unit cost
+                    // Get rate
                     string? strUC = dataGridView[2, e.RowIndex]?.Value?.ToString();
                     if (strUC == null) return;
                     if (!decimal.TryParse(strUC, out decimal decUC)) return;
