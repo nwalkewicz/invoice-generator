@@ -7,7 +7,7 @@ namespace invoice_generator
     public partial class form : Form
     {
         private string FONT_FAMILY = "Inter";
-        private string? GRAND_TOTAL = null;
+        private string GRAND_TOTAL = "$0.00";
 
         public form()
         {
@@ -122,7 +122,8 @@ namespace invoice_generator
             int MARGIN_X = 36;
             int MARGIN_Y = 24;
             int CONTENT_INSET = 12;
-            int GAP = 24;
+            int GAP = 36;
+            int TOTAL_GAP = 48;
 
             int TITLE_SIZE = 28;
             int BODY1_SIZE = 10;
@@ -131,7 +132,8 @@ namespace invoice_generator
             int QTY_WIDTH = 72;
             int RATE_WIDTH = 72;
             int AMOUNT_WIDTH = 72;
-            int TABLE_ROW_HEIGHT = BODY1_SIZE + 12;
+            int TABLE_HEADER_HEIGHT = BODY1_SIZE + 12;
+            int TABLE_ROW_HEIGHT = BODY1_SIZE + 8;
 
             XBrush grayBrush = new XSolidBrush(XColor.FromArgb(119, 119, 119));
             XBrush lightGrayBrush = new XSolidBrush(XColor.FromArgb(240, 240, 240));
@@ -243,7 +245,7 @@ namespace invoice_generator
             int BALDUE_OFFSETX = MARGIN_X + CONTENT_INSET;
             int BALDUE_OFFSETY = BALDUE_LABEL_OFFSETY;
             gfx.DrawString(
-                GRAND_TOTAL ?? "$0.00",
+                GRAND_TOTAL,
                 font_body2_bold,
                 XBrushes.Black,
                 new XRect(
@@ -287,7 +289,7 @@ namespace invoice_generator
             gfx.DrawRoundedRectangle(
                 darkGrayBrush,
                 TABLEHEADER_BG_OFFSETX, TABLEHEADER_BG_OFFSETY,
-                page.Width - TABLEHEADER_BG_OFFSETX * 2, TABLE_ROW_HEIGHT,
+                page.Width - TABLEHEADER_BG_OFFSETX * 2, TABLE_HEADER_HEIGHT,
                 4, 4
             );
 
@@ -349,11 +351,24 @@ namespace invoice_generator
             );
 
             // Draw table rows
-            int LATEST_ROW_OFFSET = TABLEHEADER_BG_OFFSETY;
+            double LAST_SAFE_PIXEL = page.Height - MARGIN_Y;
+            double LAST_SAFE_ROW_START = LAST_SAFE_PIXEL - BODY1_SIZE - TOTAL_GAP - TABLE_ROW_HEIGHT;
+
+            int LATEST_ROW_OFFSET = TABLEHEADER_BG_OFFSETY + TABLE_HEADER_HEIGHT;
+
             for (int i = 0; i < dataGridView.RowCount; i++)
             {
                 if (dataGridView.Rows[i].IsNewRow) { continue; }
-                LATEST_ROW_OFFSET += TABLE_ROW_HEIGHT;
+                if (LATEST_ROW_OFFSET > LAST_SAFE_ROW_START)
+                {
+                    // Create new page
+                    PdfPage nextPage = document.AddPage();
+                    gfx = XGraphics.FromPdfPage(nextPage);
+
+                    // Restart from top
+                    LATEST_ROW_OFFSET = MARGIN_Y;
+                }
+
                 int TEXT_OFFSETY = LATEST_ROW_OFFSET + TABLE_ROW_HEIGHT / 2 - BODY1_SIZE / 2;
 
                 // Draw ITEM cell
@@ -403,7 +418,40 @@ namespace invoice_generator
                     ),
                     XStringFormats.CenterRight
                 );
+
+                LATEST_ROW_OFFSET += TABLE_ROW_HEIGHT;
             }
+
+            // Draw TOTAL label
+            double TOTAL_LABEL_OFFSETX = page.Width / 2;
+            int TOTAL_OFFSETY = LATEST_ROW_OFFSET + TOTAL_GAP;
+            double TOTAL_LABEL_WIDTH = (page.Width / 2 - MARGIN_X) / 2;
+            double TOTAL_LABEL_HEIGHT = BODY1_SIZE;
+            gfx.DrawString(
+                "Total:",
+                font_body1_regular,
+                grayBrush,
+                new XRect(
+                    TOTAL_LABEL_OFFSETX, TOTAL_OFFSETY,
+                    TOTAL_LABEL_WIDTH, TOTAL_LABEL_HEIGHT
+                ),
+                XStringFormats.CenterRight
+            );
+
+            // Draw TOTAL
+            double TOTAL_OFFSETX = TOTAL_LABEL_OFFSETX + TOTAL_LABEL_WIDTH;
+            double TOTAL_WIDTH = page.Width - TOTAL_OFFSETX - MARGIN_X - CONTENT_INSET;
+            double TOTAL_HEIGHT = BODY1_SIZE;
+            gfx.DrawString(
+                GRAND_TOTAL,
+                font_body1_regular,
+                XBrushes.Black,
+                new XRect(
+                    TOTAL_OFFSETX, TOTAL_OFFSETY,
+                    TOTAL_WIDTH, TOTAL_HEIGHT
+                ),
+                XStringFormats.CenterRight
+            );
 
             // Save document
             document.Save(filename);
