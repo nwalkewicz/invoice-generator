@@ -30,10 +30,10 @@ namespace invoice_generator
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form));
             input_from = new TextBox();
             label_from = new Label();
@@ -51,9 +51,8 @@ namespace invoice_generator
             label_id = new Label();
             fontDialog = new FontDialog();
             button_font = new Button();
-            input_id = new NumericUpDown();
+            input_id = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)input_id).BeginInit();
             SuspendLayout();
             // 
             // input_from
@@ -121,8 +120,8 @@ namespace invoice_generator
             // tableCol_description
             // 
             tableCol_description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            tableCol_description.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            tableCol_description.DefaultCellStyle = dataGridViewCellStyle5;
             tableCol_description.HeaderText = "Description";
             tableCol_description.Name = "tableCol_description";
             tableCol_description.Resizable = DataGridViewTriState.False;
@@ -131,10 +130,10 @@ namespace invoice_generator
             // tableCol_quantity
             // 
             tableCol_quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Format = "0.00";
-            dataGridViewCellStyle2.NullValue = "0";
-            tableCol_quantity.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Format = "0.00";
+            dataGridViewCellStyle6.NullValue = "0";
+            tableCol_quantity.DefaultCellStyle = dataGridViewCellStyle6;
             tableCol_quantity.HeaderText = "Quantity";
             tableCol_quantity.Name = "tableCol_quantity";
             tableCol_quantity.Resizable = DataGridViewTriState.False;
@@ -144,10 +143,10 @@ namespace invoice_generator
             // tableCol_unit_cost
             // 
             tableCol_unit_cost.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Format = "$0.00";
-            dataGridViewCellStyle3.NullValue = "$0.00";
-            tableCol_unit_cost.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.Format = "$0.00";
+            dataGridViewCellStyle7.NullValue = "$0.00";
+            tableCol_unit_cost.DefaultCellStyle = dataGridViewCellStyle7;
             tableCol_unit_cost.HeaderText = "Unit Cost";
             tableCol_unit_cost.Name = "tableCol_unit_cost";
             tableCol_unit_cost.Resizable = DataGridViewTriState.False;
@@ -157,10 +156,10 @@ namespace invoice_generator
             // tableCol_total
             // 
             tableCol_total.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "$0.00";
-            dataGridViewCellStyle4.NullValue = "$0.00";
-            tableCol_total.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "$0.00";
+            dataGridViewCellStyle8.NullValue = "$0.00";
+            tableCol_total.DefaultCellStyle = dataGridViewCellStyle8;
             tableCol_total.HeaderText = "Total";
             tableCol_total.Name = "tableCol_total";
             tableCol_total.ReadOnly = true;
@@ -185,7 +184,7 @@ namespace invoice_generator
             label_total.AutoSize = true;
             label_total.Location = new Point(12, 530);
             label_total.Name = "label_total";
-            label_total.Size = new Size(35, 15);
+            label_total.Size = new Size(65, 15);
             label_total.TabIndex = 8;
             label_total.Text = "Total: $0.00";
             // 
@@ -193,7 +192,7 @@ namespace invoice_generator
             // 
             label_id.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label_id.AutoSize = true;
-            label_id.Location = new Point(297, 44);
+            label_id.Location = new Point(295, 44);
             label_id.Name = "label_id";
             label_id.Size = new Size(14, 15);
             label_id.TabIndex = 4;
@@ -212,7 +211,7 @@ namespace invoice_generator
             // 
             // input_id
             // 
-            input_id.Location = new Point(317, 41);
+            input_id.Location = new Point(315, 41);
             input_id.Name = "input_id";
             input_id.Size = new Size(57, 23);
             input_id.TabIndex = 5;
@@ -240,7 +239,6 @@ namespace invoice_generator
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Invoice Generator";
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
-            ((System.ComponentModel.ISupportInitialize)input_id).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -264,6 +262,6 @@ namespace invoice_generator
         private Label label_id;
         private FontDialog fontDialog;
         private Button button_font;
-        private NumericUpDown input_id;
+        private TextBox input_id;
     }
 }
