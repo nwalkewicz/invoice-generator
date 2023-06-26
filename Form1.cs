@@ -143,9 +143,9 @@ namespace invoice_generator
             int BODY1_SIZE = 10;
             int BODY2_SIZE = 12;
 
-            int QTY_WIDTH = 72;
+            int QTY_WIDTH = 64;
             int RATE_WIDTH = 72;
-            int AMOUNT_WIDTH = 72;
+            int AMOUNT_WIDTH = 96;
             int TABLE_HEADER_HEIGHT = BODY1_SIZE + 12;
             int TABLE_ROW_HEIGHT = BODY1_SIZE + 8;
 
