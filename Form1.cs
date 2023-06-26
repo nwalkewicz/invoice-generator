@@ -90,12 +90,15 @@ namespace invoice_generator
 
             for (int i = 0; i < dataGridView.RowCount; i++)
             {
-                string? strRowTotal = dataGridView[3, i]?.Value?.ToString();
-                if (strRowTotal == null) break;
-                //label_total.Text = strRowTotal.ToString();
-                string? strFormattedRowTotal = Regex.Match(strRowTotal, @"(\d+(\.\d+)?)|(\.\d+)")?.ToString();
-                if (strFormattedRowTotal == null) break;
-                if (!decimal.TryParse(strFormattedRowTotal, out decimal decRowTotal)) break;
+                if (dataGridView.Rows[i].IsNewRow) { continue; }
+
+                string? strRowAmount = dataGridView[3, i]?.Value?.ToString();
+                if (strRowAmount == null) continue;
+
+                string? strFormattedRowAmount = Regex.Match(strRowAmount, @"(\d+(\.\d+)?)|(\.\d+)")?.ToString();
+                if (strFormattedRowAmount == null) continue;
+
+                if (!decimal.TryParse(strFormattedRowAmount, out decimal decRowTotal)) continue;
 
                 decGrandTotal += decRowTotal;
             }
