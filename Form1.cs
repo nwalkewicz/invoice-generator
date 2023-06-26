@@ -161,6 +161,7 @@ namespace invoice_generator
             PdfPage page = document.AddPage();
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
+            XFont font_title = new(FONT_FAMILY, TITLE_SIZE, XFontStyle.Regular);
             XFont font_body1_regular = new(FONT_FAMILY, BODY1_SIZE, XFontStyle.Regular);
             XFont font_body2_regular = new(FONT_FAMILY, BODY2_SIZE, XFontStyle.Regular);
             XFont font_body1_bold = new(FONT_FAMILY, BODY1_SIZE, XFontStyle.Bold);
@@ -180,7 +181,6 @@ namespace invoice_generator
             );
 
             // Draw title
-            XFont font_title = new(FONT_FAMILY, TITLE_SIZE, XFontStyle.Regular);
             gfx.DrawString(
                 "INVOICE",
                 font_title,
@@ -193,12 +193,11 @@ namespace invoice_generator
             );
 
             // Draw ID
-            XFont font_id = new(FONT_FAMILY, BODY2_SIZE, XFontStyle.Regular);
             int ID_OFFSETX = MARGIN_X;
             int ID_OFFSETY = MARGIN_Y + TITLE_SIZE + 8;
             gfx.DrawString(
                 ID,
-                font_id,
+                font_body1_regular,
                 grayBrush,
                 new XRect(
                     ID_OFFSETX, ID_OFFSETY,
