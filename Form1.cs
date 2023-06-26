@@ -6,6 +6,16 @@ namespace invoice_generator
 {
     public partial class form : Form
     {
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.S))
+            {
+                savePdf();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private string FONT_FAMILY = "Inter";
         private string GRAND_TOTAL = "$0.00";
 
@@ -109,15 +119,16 @@ namespace invoice_generator
 
         private void button_save_Click(object sender, EventArgs e)
         {
-            saveFileDialog.FileName = "invoice.pdf";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                savePdf(saveFileDialog.FileName);
-            }
+            savePdf();
         }
 
-        private void savePdf(string filename)
+        private void savePdf()
         {
+            saveFileDialog.FileName = "invoice.pdf";
+            saveFileDialog.Filter = "PDF Document|*.pdf";
+            if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+            string filename = saveFileDialog.FileName;
+
             string FROM = input_from.Text;
             string ID = input_id.Text != string.Empty ? "#" + input_id.Text : string.Empty;
             string TO = input_to.Text;

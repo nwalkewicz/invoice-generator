@@ -176,7 +176,7 @@ namespace invoice_generator
             button_save.Name = "button_save";
             button_save.Size = new Size(75, 23);
             button_save.TabIndex = 12;
-            button_save.Text = "Save PDF...";
+            button_save.Text = "&Save as...";
             button_save.UseVisualStyleBackColor = true;
             button_save.Click += button_save_Click;
             // 
@@ -209,7 +209,7 @@ namespace invoice_generator
             button_font.Name = "button_font";
             button_font.Size = new Size(75, 23);
             button_font.TabIndex = 11;
-            button_font.Text = "Font...";
+            button_font.Text = "&Font...";
             button_font.UseVisualStyleBackColor = true;
             button_font.Click += button_font_Click;
             // 
