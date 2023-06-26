@@ -17,7 +17,7 @@ namespace invoice_generator
         }
 
         private string FONT_FAMILY = "Inter";
-        private string GRAND_TOTAL = "$0.00";
+        private decimal GRAND_TOTAL = 0;
 
         public form()
         {
@@ -113,8 +113,8 @@ namespace invoice_generator
                 decGrandTotal += decRowTotal;
             }
 
-            GRAND_TOTAL = decGrandTotal.ToString("$0.00");
-            label_total.Text = "Total: " + GRAND_TOTAL;
+            GRAND_TOTAL = decGrandTotal;
+            label_total.Text = "Total: " + string.Format("${0:#,##0.00}", GRAND_TOTAL);
         }
 
         private void button_save_Click(object sender, EventArgs e)
@@ -259,7 +259,7 @@ namespace invoice_generator
             int BALDUE_OFFSETX = MARGIN_X + CONTENT_INSET;
             int BALDUE_OFFSETY = BALDUE_LABEL_OFFSETY;
             gfx.DrawString(
-                GRAND_TOTAL,
+                string.Format("${0:#,##0.00}", GRAND_TOTAL),
                 font_body2_bold,
                 XBrushes.Black,
                 new XRect(
@@ -385,6 +385,15 @@ namespace invoice_generator
 
                 int TEXT_OFFSETY = LATEST_ROW_OFFSET + TABLE_ROW_HEIGHT / 2 - BODY1_SIZE / 2;
 
+                // Get decimal cell values
+                string _strRowRate = dataGridView[2, i]?.Value?.ToString() ?? "0";
+                string _strCleanRowRate = (Regex.Match(_strRowRate, @"(\d+(\.\d+)?)|(\.\d+)")?.ToString()) ?? "0";
+                if (!decimal.TryParse(_strCleanRowRate, out decimal rate)) rate = 0;
+
+                string _strRowAmount = dataGridView[3, i]?.Value?.ToString() ?? "0";
+                string _strCleanRowAmount = (Regex.Match(_strRowAmount, @"(\d+(\.\d+)?)|(\.\d+)")?.ToString()) ?? "0";
+                if (!decimal.TryParse(_strCleanRowAmount, out decimal amount)) amount = 0;
+
                 // Draw ITEM cell
                 gfx.DrawString(
                     dataGridView[0, i]?.FormattedValue?.ToString() ?? string.Empty,
@@ -411,7 +420,7 @@ namespace invoice_generator
 
                 // Draw RATE cell
                 gfx.DrawString(
-                    dataGridView[2, i]?.FormattedValue?.ToString() ?? string.Empty,
+                    string.Format("${0:#,##0.00}", rate),
                     font_body1_regular,
                     XBrushes.Black,
                     new XRect(
@@ -423,7 +432,7 @@ namespace invoice_generator
 
                 // Draw AMOUNT cell
                 gfx.DrawString(
-                    dataGridView[3, i]?.FormattedValue?.ToString() ?? string.Empty,
+                    string.Format("${0:#,##0.00}", amount),
                     font_body1_regular,
                     XBrushes.Black,
                     new XRect(
@@ -457,7 +466,7 @@ namespace invoice_generator
             double TOTAL_WIDTH = page.Width - TOTAL_OFFSETX - MARGIN_X - CONTENT_INSET;
             double TOTAL_HEIGHT = BODY1_SIZE;
             gfx.DrawString(
-                GRAND_TOTAL,
+                string.Format("${0:#,##0.00}", GRAND_TOTAL),
                 font_body1_regular,
                 XBrushes.Black,
                 new XRect(
