@@ -30,10 +30,10 @@ namespace invoice_generator
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form));
             input_from = new TextBox();
             label_from = new Label();
@@ -106,6 +106,7 @@ namespace invoice_generator
             // dataGridView
             // 
             dataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView.BackgroundColor = SystemColors.Control;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new DataGridViewColumn[] { tableCol_description, tableCol_quantity, tableCol_unit_cost, tableCol_total });
             dataGridView.Location = new Point(12, 91);
@@ -121,8 +122,8 @@ namespace invoice_generator
             // tableCol_description
             // 
             tableCol_description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            tableCol_description.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            tableCol_description.DefaultCellStyle = dataGridViewCellStyle1;
             tableCol_description.HeaderText = "Description";
             tableCol_description.Name = "tableCol_description";
             tableCol_description.Resizable = DataGridViewTriState.False;
@@ -131,10 +132,10 @@ namespace invoice_generator
             // tableCol_quantity
             // 
             tableCol_quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.Format = "0.00";
-            dataGridViewCellStyle6.NullValue = "0";
-            tableCol_quantity.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Format = "0.00";
+            dataGridViewCellStyle2.NullValue = "0";
+            tableCol_quantity.DefaultCellStyle = dataGridViewCellStyle2;
             tableCol_quantity.HeaderText = "Quantity";
             tableCol_quantity.Name = "tableCol_quantity";
             tableCol_quantity.Resizable = DataGridViewTriState.False;
@@ -144,10 +145,10 @@ namespace invoice_generator
             // tableCol_unit_cost
             // 
             tableCol_unit_cost.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.Format = "$0.00";
-            dataGridViewCellStyle7.NullValue = "$0.00";
-            tableCol_unit_cost.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Format = "$0.00";
+            dataGridViewCellStyle3.NullValue = "$0.00";
+            tableCol_unit_cost.DefaultCellStyle = dataGridViewCellStyle3;
             tableCol_unit_cost.HeaderText = "Unit Cost";
             tableCol_unit_cost.Name = "tableCol_unit_cost";
             tableCol_unit_cost.Resizable = DataGridViewTriState.False;
@@ -157,10 +158,10 @@ namespace invoice_generator
             // tableCol_total
             // 
             tableCol_total.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "$0.00";
-            dataGridViewCellStyle8.NullValue = "$0.00";
-            tableCol_total.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "$0.00";
+            dataGridViewCellStyle4.NullValue = "$0.00";
+            tableCol_total.DefaultCellStyle = dataGridViewCellStyle4;
             tableCol_total.HeaderText = "Total";
             tableCol_total.Name = "tableCol_total";
             tableCol_total.ReadOnly = true;
