@@ -101,7 +101,7 @@ namespace invoice_generator
             }
 
             GRAND_TOTAL = decGrandTotal.ToString("$0.00");
-            label_total_value.Text = GRAND_TOTAL;
+            label_total.Text = "Total: " + GRAND_TOTAL;
         }
 
         private void button_save_Click(object sender, EventArgs e)

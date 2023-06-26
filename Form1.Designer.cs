@@ -48,7 +48,6 @@ namespace invoice_generator
             saveFileDialog = new SaveFileDialog();
             button_save = new Button();
             label_total = new Label();
-            label_total_value = new Label();
             label_id = new Label();
             fontDialog = new FontDialog();
             button_font = new Button();
@@ -188,17 +187,7 @@ namespace invoice_generator
             label_total.Name = "label_total";
             label_total.Size = new Size(35, 15);
             label_total.TabIndex = 8;
-            label_total.Text = "Total:";
-            // 
-            // label_total_value
-            // 
-            label_total_value.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label_total_value.AutoSize = true;
-            label_total_value.Location = new Point(53, 530);
-            label_total_value.Name = "label_total_value";
-            label_total_value.Size = new Size(34, 15);
-            label_total_value.TabIndex = 9;
-            label_total_value.Text = "$0.00";
+            label_total.Text = "Total: $0.00";
             // 
             // label_id
             // 
@@ -237,7 +226,6 @@ namespace invoice_generator
             Controls.Add(input_id);
             Controls.Add(button_font);
             Controls.Add(label_id);
-            Controls.Add(label_total_value);
             Controls.Add(label_total);
             Controls.Add(button_save);
             Controls.Add(dataGridView);
@@ -273,7 +261,6 @@ namespace invoice_generator
         private DataGridViewTextBoxColumn tableCol_unit_cost;
         private DataGridViewTextBoxColumn tableCol_total;
         private Label label_total;
-        private Label label_total_value;
         private Label label_id;
         private FontDialog fontDialog;
         private Button button_font;
