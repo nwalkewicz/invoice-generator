@@ -41,7 +41,7 @@ namespace invoice_generator
             label_to = new Label();
             label_items = new Label();
             dataGridView = new DataGridView();
-            tableCol_description = new DataGridViewTextBoxColumn();
+            tableCol_item = new DataGridViewTextBoxColumn();
             tableCol_quantity = new DataGridViewTextBoxColumn();
             tableCol_rate = new DataGridViewTextBoxColumn();
             tableCol_total = new DataGridViewTextBoxColumn();
@@ -108,7 +108,7 @@ namespace invoice_generator
             dataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView.BackgroundColor = SystemColors.Control;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] { tableCol_description, tableCol_quantity, tableCol_rate, tableCol_total });
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { tableCol_item, tableCol_quantity, tableCol_rate, tableCol_total });
             dataGridView.Location = new Point(12, 91);
             dataGridView.Name = "dataGridView";
             dataGridView.RowTemplate.Height = 25;
@@ -119,15 +119,15 @@ namespace invoice_generator
             dataGridView.CellValueChanged += dataGridView_CellValueChanged;
             dataGridView.UserDeletedRow += dataGridView_UserDeletedRow;
             // 
-            // tableCol_description
+            // tableCol_item
             // 
-            tableCol_description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            tableCol_item.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            tableCol_description.DefaultCellStyle = dataGridViewCellStyle5;
-            tableCol_description.HeaderText = "Description";
-            tableCol_description.Name = "tableCol_description";
-            tableCol_description.Resizable = DataGridViewTriState.False;
-            tableCol_description.SortMode = DataGridViewColumnSortMode.NotSortable;
+            tableCol_item.DefaultCellStyle = dataGridViewCellStyle5;
+            tableCol_item.HeaderText = "Item";
+            tableCol_item.Name = "tableCol_item";
+            tableCol_item.Resizable = DataGridViewTriState.False;
+            tableCol_item.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // tableCol_quantity
             // 
@@ -281,7 +281,7 @@ namespace invoice_generator
         private DataGridView dataGridView;
         private SaveFileDialog saveFileDialog;
         private Button button_save;
-        private DataGridViewTextBoxColumn tableCol_description;
+        private DataGridViewTextBoxColumn tableCol_item;
         private DataGridViewTextBoxColumn tableCol_quantity;
         private DataGridViewTextBoxColumn tableCol_rate;
         private DataGridViewTextBoxColumn tableCol_total;
