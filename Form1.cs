@@ -207,11 +207,11 @@ namespace invoice_generator
             );
 
             // Draw DATE
-            string currentDate = DateTime.Now.ToString("MMM d, yyyy");
+            string date = input_date.Value.ToString("MMM d, yyyy");
             int DATE_OFFSETX = MARGIN_X + CONTENT_INSET;
             int DATE_OFFSETY = DATE_LABEL_OFFSETY;
             gfx.DrawString(
-                currentDate,
+                date,
                 font_body1_regular,
                 XBrushes.Black,
                 new XRect(

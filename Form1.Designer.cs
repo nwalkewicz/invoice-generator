@@ -30,10 +30,10 @@ namespace invoice_generator
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form));
             input_from = new TextBox();
             label_from = new Label();
@@ -52,6 +52,8 @@ namespace invoice_generator
             fontDialog = new FontDialog();
             button_font = new Button();
             input_id = new TextBox();
+            input_date = new DateTimePicker();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -111,7 +113,7 @@ namespace invoice_generator
             dataGridView.Name = "dataGridView";
             dataGridView.RowTemplate.Height = 25;
             dataGridView.ScrollBars = ScrollBars.Vertical;
-            dataGridView.Size = new Size(360, 429);
+            dataGridView.Size = new Size(360, 400);
             dataGridView.TabIndex = 7;
             dataGridView.CellFormatting += dataGridView_CellFormatting;
             dataGridView.CellValueChanged += dataGridView_CellValueChanged;
@@ -120,8 +122,8 @@ namespace invoice_generator
             // tableCol_description
             // 
             tableCol_description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            tableCol_description.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            tableCol_description.DefaultCellStyle = dataGridViewCellStyle5;
             tableCol_description.HeaderText = "Description";
             tableCol_description.Name = "tableCol_description";
             tableCol_description.Resizable = DataGridViewTriState.False;
@@ -130,10 +132,10 @@ namespace invoice_generator
             // tableCol_quantity
             // 
             tableCol_quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Format = "0.00";
-            dataGridViewCellStyle2.NullValue = "0";
-            tableCol_quantity.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Format = "0.00";
+            dataGridViewCellStyle6.NullValue = "0";
+            tableCol_quantity.DefaultCellStyle = dataGridViewCellStyle6;
             tableCol_quantity.HeaderText = "Quantity";
             tableCol_quantity.Name = "tableCol_quantity";
             tableCol_quantity.Resizable = DataGridViewTriState.False;
@@ -143,10 +145,10 @@ namespace invoice_generator
             // tableCol_rate
             // 
             tableCol_rate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Format = "$0.00";
-            dataGridViewCellStyle3.NullValue = "$0.00";
-            tableCol_rate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.Format = "$0.00";
+            dataGridViewCellStyle7.NullValue = "$0.00";
+            tableCol_rate.DefaultCellStyle = dataGridViewCellStyle7;
             tableCol_rate.HeaderText = "Rate";
             tableCol_rate.Name = "tableCol_rate";
             tableCol_rate.Resizable = DataGridViewTriState.False;
@@ -156,10 +158,10 @@ namespace invoice_generator
             // tableCol_total
             // 
             tableCol_total.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "$0.00";
-            dataGridViewCellStyle4.NullValue = "$0.00";
-            tableCol_total.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "$0.00";
+            dataGridViewCellStyle8.NullValue = "$0.00";
+            tableCol_total.DefaultCellStyle = dataGridViewCellStyle8;
             tableCol_total.HeaderText = "Total";
             tableCol_total.Name = "tableCol_total";
             tableCol_total.ReadOnly = true;
@@ -173,8 +175,8 @@ namespace invoice_generator
             button_save.Location = new Point(297, 526);
             button_save.Name = "button_save";
             button_save.Size = new Size(75, 23);
-            button_save.TabIndex = 11;
-            button_save.Text = "Save PDF";
+            button_save.TabIndex = 12;
+            button_save.Text = "Save PDF...";
             button_save.UseVisualStyleBackColor = true;
             button_save.Click += button_save_Click;
             // 
@@ -182,11 +184,13 @@ namespace invoice_generator
             // 
             label_total.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label_total.AutoSize = true;
+            label_total.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label_total.Location = new Point(12, 530);
             label_total.Name = "label_total";
-            label_total.Size = new Size(65, 15);
-            label_total.TabIndex = 8;
+            label_total.Size = new Size(71, 15);
+            label_total.TabIndex = 10;
             label_total.Text = "Total: $0.00";
+            label_total.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_id
             // 
@@ -201,10 +205,10 @@ namespace invoice_generator
             // button_font
             // 
             button_font.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button_font.Location = new Point(216, 526);
+            button_font.Location = new Point(214, 526);
             button_font.Name = "button_font";
             button_font.Size = new Size(75, 23);
-            button_font.TabIndex = 10;
+            button_font.TabIndex = 11;
             button_font.Text = "Font...";
             button_font.UseVisualStyleBackColor = true;
             button_font.Click += button_font_Click;
@@ -217,12 +221,34 @@ namespace invoice_generator
             input_id.Size = new Size(57, 23);
             input_id.TabIndex = 5;
             // 
+            // input_date
+            // 
+            input_date.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            input_date.Format = DateTimePickerFormat.Custom;
+            input_date.Location = new Point(48, 497);
+            input_date.Name = "input_date";
+            input_date.Size = new Size(324, 23);
+            input_date.TabIndex = 9;
+            input_date.CustomFormat = "MMM d, yyyy";
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 501);
+            label1.Name = "label1";
+            label1.Size = new Size(31, 15);
+            label1.TabIndex = 8;
+            label1.Text = "Date";
+            // 
             // form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Window;
             ClientSize = new Size(384, 561);
+            Controls.Add(label1);
+            Controls.Add(input_date);
             Controls.Add(input_id);
             Controls.Add(button_font);
             Controls.Add(label_id);
@@ -264,5 +290,7 @@ namespace invoice_generator
         private FontDialog fontDialog;
         private Button button_font;
         private TextBox input_id;
+        private DateTimePicker input_date;
+        private Label label1;
     }
 }
